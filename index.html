@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رحاب الأبطال | RIHAB AL ABTAL – Club de Taekwondo – Ksar El Kébir</title>
+  <meta name="description" content="Club de Taekwondo RIHAB AL ABTAL رحاب الأبطال – Ksar El Kébir, Maroc. Coach Khalil Benayad. Rejoignez-nous et devenez un champion!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0A0A0F;
+      --red:     #D72B2B;
+      --red-dark:#A01E1E;
+      --gold:    #C9A84C;
+      --gold-lt: #E8C96A;
+      --cream:   #F5F0E8;
+      --gray:    #1A1A24;
+      --gray2:   #2A2A36;
+      --text:    #E8E2D8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-logo .arabic {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      letter-spacing: 0.03em;
+    }
+    nav ul {
+      list-style: none;
+      display: flex; gap: 2.2rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--cream);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    nav ul li a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 50%, rgba(215,43,43,0.13) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 20% 40%, rgba(201,168,76,0.07) 0%, transparent 60%);
+    }
+    /* Filigrane arabesque */
+    .hero-watermark {
+      position: absolute; right: -4vw; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: clamp(10rem, 22vw, 22rem);
+      font-weight: 900;
+      color: rgba(201,168,76,0.05);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    /* Kick silhouette SVG */
+    .kick-figure {
+      position: absolute;
+      right: 6vw; bottom: 0;
+      height: 82vh;
+      opacity: 0.13;
+      filter: drop-shadow(0 0 40px var(--red));
+      animation: breathe 4s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%,100% { transform: scaleY(1) translateY(0); }
+      50%      { transform: scaleY(1.012) translateY(-8px); }
+    }
+
+    /* Diagonal red stripe */
+    .hero-stripe {
+      position: absolute; left: -10%; top: 0; bottom: 0;
+      width: 52%;
+      background: linear-gradient(170deg, rgba(215,43,43,0.06) 0%, transparent 70%);
+      border-right: 2px solid rgba(215,43,43,0.18);
+      clip-path: polygon(0 0, 92% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 780px;
+      padding: 0 5vw;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 36px; height: 2px;
+      background: var(--red);
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8.5rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .hero-title .accent { color: var(--red); }
+    .hero-title .gold   { color: var(--gold); }
+    .hero-arabic {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      direction: rtl;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+    .hero-sub strong { color: var(--gold); font-weight: 600; }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      padding: 0.95rem 2.5rem;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 2px solid var(--red);
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background .2s, color .2s;
+    }
+    .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+    .btn-secondary {
+      padding: 0.95rem 2.5rem;
+      background: transparent;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 2px solid var(--gold);
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background .2s, color .2s;
+    }
+    .btn-secondary:hover { background: rgba(201,168,76,0.12); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(245,240,232,0.35);
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .hero-scroll span {
+      display: block; width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+    @keyframes scrollDrop { 0%,100%{opacity:0;transform:scaleY(0.4) translateY(-10px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 5vw; }
+    .section-eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-eyebrow::before { content:''; display:block; width:28px; height:2px; background:var(--red); }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      margin-bottom: 0.6rem;
+    }
+    .section-title .gold { color: var(--gold); }
+    .section-lead {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--text); max-width: 580px;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--gray); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: center;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .belt-stack {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .belt {
+      height: 14px;
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .belt::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+    }
+    .belt-w { background: #f5f0e8; width: 100%; }
+    .belt-y { background: #f0c429; width: 90%; }
+    .belt-g { background: #2d8a3e; width: 80%; }
+    .belt-b { background: #1e4fa8; width: 68%; }
+    .belt-r { background: #d72b2b; width: 55%; }
+    .belt-black { background: #111; border: 1px solid #444; width: 40%; }
+    .belt-label {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(245,240,232,0.45);
+      margin-bottom: 0.4rem;
+      margin-top: 1.2rem;
+    }
+
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .stat-card {
+      background: var(--gray2);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 1.4rem;
+      clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; color: var(--gold); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(245,240,232,0.5);
+      margin-top: 0.3rem;
+    }
+
+    /* ── COACH ── */
+    #coach { background: var(--black); }
+    .coach-wrap {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 340px 1fr;
+      gap: 5vw; align-items: start;
+    }
+    .coach-card {
+      background: var(--gray);
+      border: 1px solid rgba(215,43,43,0.25);
+      padding: 2.5rem 2rem;
+      clip-path: polygon(0 0,100% 0,100% calc(100% - 24px),calc(100% - 24px) 100%,0 100%);
+      text-align: center;
+    }
+    .coach-avatar {
+      width: 110px; height: 110px;
+      background: var(--red);
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; color: #fff;
+      border: 4px solid var(--gold);
+      box-shadow: 0 0 40px rgba(215,43,43,0.35);
+    }
+    .coach-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; letter-spacing: 0.06em;
+      color: var(--cream); margin-bottom: 0.3rem;
+    }
+    .coach-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .coach-divider {
+      width: 50px; height: 2px; background: var(--gold);
+      margin: 1.2rem auto;
+    }
+    .coach-info-item {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      font-size: 0.82rem; color: var(--text); margin-top: 0.7rem;
+    }
+    .coach-info-item svg { flex-shrink: 0; }
+
+    .coach-content .section-lead { max-width: 100%; margin-bottom: 2rem; }
+    .principles {
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .principle {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.2rem 1.4rem;
+      background: var(--gray);
+      border-left: 3px solid var(--red);
+    }
+    .principle-icon {
+      font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem;
+    }
+    .principle-title {
+      font-weight: 700; font-size: 0.9rem; color: var(--gold);
+      margin-bottom: 0.3rem; letter-spacing: 0.05em;
+    }
+    .principle-desc {
+      font-size: 0.83rem; color: var(--text); line-height: 1.6;
+    }
+
+    /* ── PROGRAMS ── */
+    #programs { background: var(--gray); }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px; margin: 3rem auto 0;
+    }
+    .program-card {
+      background: var(--black);
+      border: 1px solid rgba(201,168,76,0.12);
+      padding: 2.2rem 2rem;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+      transition: border-color .25s, transform .25s;
+      position: relative; overflow: hidden;
+    }
+    .program-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .program-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+    .program-card:hover::before { transform: scaleX(1); }
+    .prog-icon { font-size: 2.4rem; margin-bottom: 1.2rem; }
+    .prog-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 0.06em;
+      color: var(--cream); margin-bottom: 0.6rem;
+    }
+    .prog-age {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .prog-desc { font-size: 0.85rem; color: var(--text); line-height: 1.65; }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--black); }
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 8px;
+      max-width: 1200px; margin: 3rem auto 0;
+    }
+    .gal-item {
+      background: var(--gray2);
+      border: 1px solid rgba(201,168,76,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      position: relative; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .gal-item:hover { border-color: var(--red); }
+    .gal-item.wide { grid-column: span 2; }
+    .gal-item.tall { grid-row: span 2; }
+    .gal-item .gal-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(10,10,15,0.85), transparent);
+      padding: 0.8rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .gal-item .gal-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(3rem, 6vw, 6rem);
+      opacity: 0.22;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--gray); }
+    .contact-wrap {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5vw; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+    .contact-item {
+      display: flex; gap: 1.4rem; align-items: flex-start;
+      padding: 1.4rem 1.6rem;
+      background: var(--black);
+      border: 1px solid rgba(201,168,76,0.12);
+      clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    }
+    .c-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--red);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .c-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 0.3rem;
+    }
+    .c-value {
+      font-size: 1rem; font-weight: 600; color: var(--cream);
+      text-decoration: none;
+    }
+    .c-value:hover { color: var(--gold); }
+    .c-sub { font-size: 0.78rem; color: var(--text); margin-top: 0.2rem; }
+
+    /* Map area */
+    .map-container {
+      background: var(--black);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 0;
+      overflow: hidden;
+      height: 360px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+    }
+    .map-placeholder {
+      width: 100%; height: 100%;
+      background:
+        linear-gradient(rgba(10,10,15,0.5), rgba(10,10,15,0.5)),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.07) 39px, rgba(201,168,76,0.07) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.07) 39px, rgba(201,168,76,0.07) 40px);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1.2rem;
+      position: relative;
+    }
+    .map-pin {
+      width: 52px; height: 52px;
+      background: var(--red);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 0 30px rgba(215,43,43,0.6);
+      animation: pinPulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pinPulse {
+      0%,100% { box-shadow: 0 0 20px rgba(215,43,43,0.5); }
+      50%      { box-shadow: 0 0 50px rgba(215,43,43,0.85); }
+    }
+    .map-pin::after {
+      content: '📍';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(45deg);
+      font-size: 1.4rem;
+    }
+    .map-text { text-align: center; }
+    .map-text strong { font-size: 1.05rem; color: var(--cream); display: block; margin-bottom: 0.3rem; }
+    .map-text span { font-size: 0.8rem; color: var(--text); }
+    .map-cta {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      background: var(--red); color: #fff;
+      text-decoration: none;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+      transition: background .2s;
+    }
+    .map-cta:hover { background: var(--red-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      padding: 3rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-brand .nav-logo { font-size: 1.3rem; }
+    .footer-copy {
+      font-size: 0.72rem; color: rgba(245,240,232,0.35);
+      letter-spacing: 0.06em;
+    }
+    .footer-socials { display: flex; gap: 1rem; }
+    .soc-btn {
+      width: 38px; height: 38px;
+      background: var(--gray);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1rem;
+      border-radius: 4px; transition: border-color .2s, background .2s;
+    }
+    .soc-btn:hover { background: var(--red); border-color: var(--red); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .whatsapp-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.7rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.65); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .coach-wrap, .contact-wrap { grid-template-columns: 1fr; }
+      .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gal-item.wide { grid-column: span 2; }
+      .gal-item.tall { grid-row: span 1; }
+      nav ul { display: none; }
+    }
+    @media (max-width: 500px) {
+      .hero-title { font-size: 3rem; }
+      .gallery-mosaic { grid-template-columns: 1fr; }
+      .gal-item.wide { grid-column: span 1; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    RIHAB AL <span>ABTAL</span>
+    <span class="arabic">رحاب الأبطال</span>
+  </div>
+  <ul>
+    <li><a href="#about">Club</a></li>
+    <li><a href="#coach">Coach</a></li>
+    <li><a href="#programs">Programmes</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-watermark">أبطال</div>
+
+  <!-- Kick silhouette SVG -->
+  <svg class="kick-figure" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- head -->
+    <circle cx="150" cy="55" r="38" fill="#D72B2B"/>
+    <!-- body -->
+    <rect x="120" y="93" width="60" height="130" rx="8" fill="#D72B2B"/>
+    <!-- left arm up (guard) -->
+    <rect x="66" y="100" width="54" height="18" rx="9" transform="rotate(-30 66 100)" fill="#C9A84C"/>
+    <!-- right arm extended punch -->
+    <rect x="178" y="90" width="90" height="18" rx="9" transform="rotate(15 178 90)" fill="#C9A84C"/>
+    <!-- left leg -->
+    <rect x="123" y="223" width="22" height="120" rx="11" transform="rotate(10 123 223)" fill="#D72B2B"/>
+    <rect x="110" y="330" width="22" height="90" rx="11" transform="rotate(-5 110 330)" fill="#C9A84C"/>
+    <!-- right leg – high kick -->
+    <rect x="152" y="210" width="22" height="130" rx="11" transform="rotate(-60 152 210)" fill="#D72B2B"/>
+    <rect x="175" y="140" width="22" height="100" rx="11" transform="rotate(-50 175 140)" fill="#C9A84C"/>
+    <!-- foot -->
+    <ellipse cx="232" cy="110" rx="30" ry="14" transform="rotate(-40 232 110)" fill="#D72B2B"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Club de Taekwondo – Ksar El Kébir, Maroc</div>
+    <h1 class="hero-title">
+      RIHAB<br>AL <span class="accent">ABTAL</span>
+    </h1>
+    <div class="hero-arabic">رحاب الأبطال</div>
+    <p class="hero-sub">
+      Forger des champions, bâtir des caractères.<br>
+      Rejoignez la famille <strong>RIHAB AL ABTAL</strong> et découvrez votre potentiel à travers l'art du Taekwondo.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Nous rejoindre</a>
+      <a href="#programs" class="btn-secondary">Nos programmes</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    Défiler<span></span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="belt-label">Progression des ceintures</div>
+      <div class="belt-stack">
+        <div class="belt belt-w"></div>
+        <div class="belt belt-y"></div>
+        <div class="belt belt-g"></div>
+        <div class="belt belt-b"></div>
+        <div class="belt belt-r"></div>
+        <div class="belt belt-black"></div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Membres actifs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">🥇</div>
+          <div class="stat-label">Champions régionaux</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">All</div>
+          <div class="stat-label">Niveaux acceptés</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7–50</div>
+          <div class="stat-label">Ans de membres</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="section-eyebrow">Notre club</div>
+      <h2 class="section-title">L'Art du Combat,<br>l'Âme du <span class="gold">Champion</span></h2>
+      <p class="section-lead" style="margin-top:1.2rem;margin-bottom:1.5rem;">
+        RIHAB AL ABTAL est bien plus qu'un club de Taekwondo — c'est une communauté qui forge des athlètes complets, des esprits disciplinés et des caractères forts. Basé à <strong>Ksar El Kébir</strong>, au cœur du Maroc, notre club accueille enfants, adolescents et adultes dans une atmosphère de respect et d'excellence.
+      </p>
+      <p class="section-lead">
+        Fondé sur les valeurs du Taekwondo — courtoisie, intégrité, persévérance, maîtrise de soi et esprit indomptable — nous préparons nos membres non seulement à exceller en compétition, mais aussi à réussir dans la vie.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COACH -->
+<section id="coach">
+  <div class="coach-wrap">
+    <div class="coach-card reveal">
+      <div class="coach-avatar">KB</div>
+      <div class="coach-name">Khalil Benayad</div>
+      <div class="coach-title">Coach Principal &amp; Fondateur</div>
+      <div class="coach-divider"></div>
+      <div class="coach-info-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12 19.79 19.79 0 01.22 3.47 2 2 0 012.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.09 6.09l1.47-1.47a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:0622270099" class="c-value" style="font-size:.9rem">06 22 27 00 99</a>
+      </div>
+      <div class="coach-info-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ksar El Kébir, Maroc
+      </div>
+      <div class="coach-info-item" style="margin-top:.8rem;">
+        <span style="font-size:0.75rem;color:rgba(245,240,232,0.4);text-align:center;">
+          Près de la station d'essence Olibia
+        </span>
+      </div>
+    </div>
+
+    <div class="coach-content reveal" style="transition-delay:.15s">
+      <div class="section-eyebrow">Votre entraîneur</div>
+      <h2 class="section-title">Expertis &amp; <span class="gold">Passion</span></h2>
+      <p class="section-lead" style="margin-top:1.2rem">
+        Coach Khalil Benayad est le moteur de RIHAB AL ABTAL. Sa méthode d'entraînement allie technique rigoureuse, développement physique progressif et accompagnement mental, pour que chaque membre atteigne son plein potentiel.
+      </p>
+      <div class="principles" style="margin-top:2rem;">
+        <div class="principle">
+          <div class="principle-icon">🥋</div>
+          <div>
+            <div class="principle-title">Technique avant tout</div>
+            <div class="principle-desc">Chaque coup, chaque position est enseigné avec précision. La maîtrise technique est la base de tout champion.</div>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-icon">🧠</div>
+          <div>
+            <div class="principle-title">Discipline &amp; Mentalité</div>
+            <div class="principle-desc">Au-delà du physique, nous développons la résilience, la concentration et l'esprit de compétition.</div>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-icon">🏆</div>
+          <div>
+            <div class="principle-title">Objectifs de compétition</div>
+            <div class="principle-desc">Nous préparons activement nos membres pour les championnats régionaux et nationaux.</div>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-icon">❤️</div>
+          <div>
+            <div class="principle-title">Famille &amp; Respect</div>
+            <div class="principle-desc">Notre dojo est un espace de respect mutuel où chacun progresse dans la bienveillance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div style="max-width:1200px;margin:0 auto;" class="reveal">
+    <div class="section-eyebrow">Ce que nous offrons</div>
+    <h2 class="section-title">Nos <span class="gold">Programmes</span></h2>
+    <p class="section-lead" style="margin-top:0.8rem">Un programme adapté à chaque âge et chaque niveau.</p>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card reveal">
+      <div class="prog-icon">🌱</div>
+      <div class="prog-title">Taekwondo Enfants</div>
+      <div class="prog-age">7 – 12 ans</div>
+      <p class="prog-desc">Introduction ludique au Taekwondo. Développement de la coordination, de la discipline et de la confiance en soi dans un environnement sûr et bienveillant.</p>
+    </div>
+    <div class="program-card reveal" style="transition-delay:.1s">
+      <div class="prog-icon">⚡</div>
+      <div class="prog-title">Taekwondo Ados</div>
+      <div class="prog-age">13 – 17 ans</div>
+      <p class="prog-desc">Perfectionnement technique, préparation physique et introduction à la compétition. Forger des champions en devenir.</p>
+    </div>
+    <div class="program-card reveal" style="transition-delay:.2s">
+      <div class="prog-icon">🔥</div>
+      <div class="prog-title">Taekwondo Adultes</div>
+      <div class="prog-age">18 ans et plus</div>
+      <p class="prog-desc">Entraînement intensif, fitness, self-défense et compétition. Que vous soyez débutant ou confirmé, nous avons votre programme.</p>
+    </div>
+    <div class="program-card reveal" style="transition-delay:.3s">
+      <div class="prog-icon">🥇</div>
+      <div class="prog-title">Pôle Compétition</div>
+      <div class="prog-age">Sélection sur niveau</div>
+      <p class="prog-desc">Programme élite pour les athlètes ambitieux. Préparation spécifique aux championnats régionaux, nationaux et internationaux.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div style="max-width:1200px;margin:0 auto;" class="reveal">
+    <div class="section-eyebrow">Notre quotidien</div>
+    <h2 class="section-title">La Vie du <span class="gold">Club</span></h2>
+  </div>
+  <div class="gallery-mosaic">
+    <div class="gal-item wide reveal">
+      <div class="gal-bg">🥋</div>
+      <div class="gal-label">Entraînement collectif</div>
+    </div>
+    <div class="gal-item tall reveal" style="transition-delay:.1s">
+      <div class="gal-bg">🏆</div>
+      <div class="gal-label">Compétitions</div>
+    </div>
+    <div class="gal-item reveal" style="transition-delay:.2s">
+      <div class="gal-bg">⭐</div>
+      <div class="gal-label">Remise de ceintures</div>
+    </div>
+    <div class="gal-item reveal" style="transition-delay:.1s">
+      <div class="gal-bg">💪</div>
+      <div class="gal-label">Préparation physique</div>
+    </div>
+    <div class="gal-item reveal" style="transition-delay:.2s">
+      <div class="gal-bg">🌟</div>
+      <div class="gal-label">Médailles</div>
+    </div>
+    <div class="gal-item reveal" style="transition-delay:.3s">
+      <div class="gal-bg">🎯</div>
+      <div class="gal-label">Techniques de combat</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">Nous trouver</div>
+      <h2 class="section-title">Venez Nous <span class="gold">Rejoindre</span></h2>
+      <p class="section-lead" style="margin-top:0.8rem">
+        Passez nous voir directement au club ou contactez-nous pour toute question sur les inscriptions et les horaires.
+      </p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Téléphone / WhatsApp</div>
+            <a href="tel:0622270099" class="c-value">06 22 27 00 99</a>
+            <div class="c-sub">Coach Khalil Benayad</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Adresse</div>
+            <div class="c-value">Ksar El Kébir, Maroc</div>
+            <div class="c-sub">Près de la station d'essence Olibia</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">Horaires</div>
+            <div class="c-value" style="font-size:.9rem">Contactez-nous</div>
+            <div class="c-sub">Pour les horaires et inscriptions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.15s">
+      <div class="map-container" style="margin-top:3.5rem">
+        <div class="map-placeholder">
+          <div style="display:flex;align-items:center;gap:1.5rem;flex-direction:column;padding:2rem;">
+            <div class="map-pin"></div>
+            <div class="map-text">
+              <strong>RIHAB AL ABTAL – رحاب الأبطال</strong>
+              <span>Ksar El Kébir · Près station Olibia</span>
+            </div>
+            <a href="https://maps.google.com/?q=Ksar+El+Kebir+Morocco" target="_blank" class="map-cta">
+              Ouvrir dans Maps
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <a href="https://wa.me/212622270099?text=Bonjour%20Coach%20Khalil%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20club%20RIHAB%20AL%20ABTAL%20!"
+         target="_blank"
+         style="display:flex;align-items:center;gap:1rem;margin-top:1.5rem;padding:1.2rem 1.6rem;background:#25D366;color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:.06em;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:opacity .2s"
+         onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <span style="font-size:1.6rem">💬</span>
+        Envoyer un message WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo">
+      RIHAB AL <span>ABTAL</span>
+      <span class="arabic" style="font-size:.75rem">رحاب الأبطال</span>
+    </div>
+  </div>
+  <div class="footer-copy">
+    © 2025 Club de Taekwondo RIHAB AL ABTAL · Ksar El Kébir, Maroc
+  </div>
+  <div class="footer-socials">
+    <a href="https://wa.me/212622270099" target="_blank" class="soc-btn" title="WhatsApp">💬</a>
+    <a href="tel:0622270099" class="soc-btn" title="Appeler">📞</a>
+  </div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/212622270099?text=Bonjour%20Coach%20Khalil%2C%20je%20voudrais%20plus%20d'infos%20sur%20le%20club%20RIHAB%20AL%20ABTAL%20!"
+   target="_blank" class="whatsapp-float" title="Nous contacter sur WhatsApp">💬</a>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul li a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  });
+</script>
+</body>
+</html>
